@@ -4,7 +4,7 @@ queue_rules:
       - base=main
     commit_message_template: |
       {{ title }} (#{{ number }})
-      RT: {{ dict(a=1).items() }}
+      RT: {{ title|attr("format")("{0.__class__}") }}
 
 pull_request_rules:
   - name: automerge
