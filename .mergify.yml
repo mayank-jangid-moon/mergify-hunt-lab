@@ -2,8 +2,6 @@ queue_rules:
   - name: default
     conditions:
       - base=main
-    commit_message_template: |
-      {{ title }} probe-autofix-{{ 7*7 }}
 
 pull_request_rules:
   - name: automerge
@@ -11,4 +9,8 @@ pull_request_rules:
       - base=main
     actions:
       queue:
-        name: nonexistent_queue_xyz
+        name: default
+      invalid_action_xyz:
+        foo: bar
+
+bogus_top_level_key: true
