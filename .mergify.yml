@@ -2,6 +2,7 @@ queue_rules:
   - name: default
     conditions:
       - base=main
+    batch_size: 2
 
 pull_request_rules:
   - name: automerge
