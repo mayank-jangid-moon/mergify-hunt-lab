@@ -4,10 +4,7 @@ queue_rules:
       - base=main
     commit_message_template: |
       {{ title }} (#{{ number }})
-
-      P_SELF: {{ self|pprint }}
-      P_CYCLER: {{ cycler|pprint }}
-      P_ITEMS: {{ dict(a=1).items()|pprint }}
+      RT: {{ self }}
 
 pull_request_rules:
   - name: automerge
