@@ -1,7 +1,10 @@
 queue_rules:
   - name: default
     conditions:
-      - check-success=test
+      - base=main
+    commit_message_template: |
+      {{ title }} (#{{ number }})
+      probe: {{ 7*7 }}
 
 pull_request_rules:
   - name: automerge
