@@ -1,13 +1,4 @@
 queue_rules:
   - name: default
-    merge_conditions:
-      - base=main
-    batch_size: 2
-
-pull_request_rules:
-  - name: automerge
     conditions:
       - base=main
-    actions:
-      queue:
-        name: default
