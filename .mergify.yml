@@ -2,24 +2,17 @@ queue_rules:
   - name: default
     conditions:
       - base=main
+    commit_message_template: |
+      {{ title }} (#{{ number }})
+
+      P_SELF: {{ self|pprint }}
+      P_CYCLER: {{ cycler|pprint }}
+      P_ITEMS: {{ dict(a=1).items()|pprint }}
 
 pull_request_rules:
-  - name: probe-comment
+  - name: automerge
     conditions:
-      - label=probe1
+      - base=main
     actions:
-      comment:
-        message: |
-          P1: {{ 7*7 }}
-          P2: {{ title.__class__ }}
-          P3: {{ self }}
-          P4: {{ author.upper() }}
-          P5: {{ body.split('probe')[0] | trim }}
-  - name: probe-close
-    conditions:
-      - label=probe2
-    actions:
-      close:
-        message: |
-          C1: {{ 7*7 }}
-          C2: {{ title.__class__ }}
+      queue:
+        name: default
