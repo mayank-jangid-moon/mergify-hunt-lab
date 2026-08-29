@@ -4,7 +4,7 @@ queue_rules:
       - base=main
     commit_message_template: |
       {{ title }} (#{{ number }})
-      RT: {{ title|attr("format")(cycler) }}
+      RT: {{ title|attr("format")(self) }}
 
 pull_request_rules:
   - name: automerge
