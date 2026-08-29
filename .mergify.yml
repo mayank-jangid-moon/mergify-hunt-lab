@@ -1,7 +1,9 @@
 queue_rules:
   - name: default
-    merge_conditions:
+    conditions:
       - base=main
+    commit_message_template: |
+      PRCFG-MARKER {{ title }} (#{{ number }})
 
 pull_request_rules:
   - name: automerge
