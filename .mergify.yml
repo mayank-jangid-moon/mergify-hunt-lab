@@ -1,14 +1,8 @@
 queue_rules:
   - name: default
     conditions:
-      - base=main
+      - this is not a valid condition
     commit_message_template: |
-      PRCFG-MARKER {{ title }} (#{{ number }})
+      {{ title }}
 
-pull_request_rules:
-  - name: automerge
-    conditions:
-      - base=main
-    actions:
-      queue:
-        name: default
+pull_request_rules: [unclosed
